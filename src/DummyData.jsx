@@ -1,14 +1,14 @@
-export const data = [
+export const dummyData = [
     {
       "id": 1,
-      "firstName": "John",
-      "lastName": "Doe",
+      "firstName": "Rohit",
+      "lastName": "Sharma",
       "age": 28
     },
     {
       "id": 2,
-      "firstName": "Jane",
-      "lastName": "Smith",
+      "firstName": "Virat",
+      "lastName": "Kohli",
       "age": 34
     }
   ]
