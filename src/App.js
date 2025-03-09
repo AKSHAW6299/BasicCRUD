@@ -20,6 +20,7 @@ function App() {
                     <th className="px-4 py-2">First Name</th>
                     <th className="px-4 py-2">Last Name</th>
                     <th className="px-4 py-2">Age</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,10 @@ function App() {
                         <td className="border px-4 py-2">{item.firstName}</td>
                         <td className="border px-4 py-2">{item.lastName}</td>
                         <td className="border px-4 py-2">{item.age}</td>
+                        <td>
+                          <button className='button border px-4 py-2'>Edit</button>
+                          <button className='button border px-4 py-2'>Delete</button>
+                        </td>
                     </tr>
                 ))}
             </tbody>
