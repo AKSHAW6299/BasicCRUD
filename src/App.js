@@ -1,3 +1,4 @@
+// Link => https://www.youtube.com/watch?v=maGN8iGs744&list=LL&index=1&t=532s
 import React, { useEffect, useState } from 'react';
 import { EmployeeData } from './EmployeeData';
 
@@ -30,6 +31,8 @@ function App() {
             setAge(dt[0].age);
         }
     }
+
+    // 4) Delete method
     const handleDelete = (id) => {
         // this condition will return the all id except the deleted id!
         if (id > 0) {
@@ -48,6 +51,7 @@ function App() {
         setIsUpdate(false);
     }
 
+    // 1) Create method
     const handleSave = (e) => {
         e.preventDefault();
         // getting all remaining data
@@ -68,7 +72,7 @@ function App() {
         setData(dt);
     }
 
-    // We have to find index to update
+    // 3) Update method : We have to find index to update
     const handleUpdate = () => {
         const index = data.map((item) => {
             return item.id;
