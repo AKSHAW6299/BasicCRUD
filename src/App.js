@@ -53,23 +53,33 @@ function App() {
 
     // 1) Create method
     const handleSave = (e) => {
-        e.preventDefault();
-        // getting all remaining data
-        const dt = [...data];
 
-        // for addinhg a new data, creating an object of the data
-        const newObject = {
-            id: EmployeeData.length + 1,
-            firstName: firstName,
-            lastName: lastName,
-            age: age
+        let error = ''
+        if (firstName === '')
+            error += 'First name is required\n';
+        if (lastName === '')
+            error += 'Last name is required\n';
+        if (age <= 0)
+            error += 'Age is required\n';
+        
+        if (error === '') {
+            e.preventDefault();
+            // getting all remaining data
+            const dt = [...data];
+            // for addinhg a new data, creating an object of the data
+            const newObject = {
+                id: EmployeeData.length + 1,
+                firstName: firstName,
+                lastName: lastName,
+                age: age
+            }
+            // We are pushing the new object to the data array i.e. dt
+            dt.push(newObject);
+            // updating data state
+            setData(dt);
+        } else {
+            alert(error);
         }
-
-        // We are pushing the new object to the data array i.e. dt
-        dt.push(newObject);
-
-        // updating data state
-        setData(dt);
     }
 
     // 3) Update method : We have to find index to update
