@@ -37,8 +37,6 @@ function App() {
                         id="firstName"
                         placeholder="First Name"
                         className="mt-1 p-2 border rounded w-full"
-                        // value={firstName}
-                        // onChange={(e) => setFirstName(e.target.value)}
                     />
                 </div>
                 <div className="mb-2 flex-1">
@@ -48,8 +46,6 @@ function App() {
                         id="lastName"
                         placeholder="Last Name"
                         className="mt-1 p-2 border rounded w-full"
-                        // value={lastName}
-                        // onChange={(e) => setLastName(e.target.value)}
                     />
                 </div>
                 <div className="mb-2 flex-1">
@@ -59,20 +55,16 @@ function App() {
                         id="age"
                         placeholder="Age"
                         className="mt-1 p-2 border rounded w-full"
-                        // value={age}
-                        // onChange={(e) => setAge(e.target.value)}
                     />
                 </div>
                 <div className='flex-1 mt-8'>
                     <button
                         className="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2"
-                        // onClick={() => handleEdit(editId)}
                     >
                         Save
                     </button>
                     <button
                         className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded"
-                        // onClick={handleClear}
                     >
                         Clear
                     </button>
