@@ -8,6 +8,9 @@ function App() {
     const [age, setAge] = useState('');
     const [id, setId] = useState(0);
 
+    // Flag to show 1 button save or update at a single time!
+    const [isUpdate, setIsUpdate] = useState(false);
+
     console.log('data :', data);
 
     // fetch data when the component renders
@@ -20,6 +23,7 @@ function App() {
     const handleEdit = (id) => {
         const dt = data.filter(item => item.id === id);
         if (dt !== undefined) {
+            setIsUpdate(true);
             setId(id);
             setFirstName(dt[0].firstName);
             setLastName(dt[0].lastName);
@@ -90,18 +94,22 @@ function App() {
                     />
                 </div>
                 <div className='flex-1 mt-8'>
-                    <button
-                        className="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2"
-                        onClick={() => handleSave()}
-                    >
-                        Save
-                    </button>
-                    <button
-                        className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded mr-2"
-                        onClick={() => handleUpdate()}
-                    >
-                        Update
-                    </button>
+                    {/* Using check */}
+                    {isUpdate ? (
+                        <button
+                            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded mr-2"
+                            onClick={() => handleUpdate()}
+                        >
+                            Update
+                        </button>
+                    ) : (
+                        <button
+                            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded mr-2"
+                            onClick={() => handleSave()}
+                        >
+                            Save
+                        </button>
+                    )}
                     <button
                         className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-1 px-2 rounded"
                         onClick={() => handleClear()}
