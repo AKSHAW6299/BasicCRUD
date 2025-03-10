@@ -3,6 +3,11 @@ import { dummyData } from './DummyData';
 
 function App() {
     const [data, setData] = useState([]);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [age, setAge] = useState(0);
+    const [id, setId] = useState(0);
+
     console.log('data :', data);
 
     // fetch data when the component renders
@@ -13,7 +18,13 @@ function App() {
 
     // Creating 2 events, for edit and delete
     const handleEdit = (id) => {
-        alert(id)
+        const dt = data.filter(item => item.id === id);
+        if (dt !== undefined) {
+            setId(id);
+            setFirstName(dt[0].firstName);
+            setLastName(dt[0].lastName);
+            setAge(dt[0].age);
+        }
     }
     const handleDelete = (id) => {
         // this condition will return the all id except the deleted id!
@@ -25,6 +36,16 @@ function App() {
         }
     }
 
+    const handleClear = () => {
+        setFirstName('');
+        setLastName('');
+        setAge(0);
+        setId(0);
+    }
+
+    const handleSave = () => {
+        alert('save');
+    }
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-semibold mb-4">Basic CRUD</h1>
@@ -37,6 +58,8 @@ function App() {
                         id="firstName"
                         placeholder="First Name"
                         className="mt-1 p-2 border rounded w-full"
+                        onChange={(e) => setFirstName(e.target.value)}
+                        value={firstName}
                     />
                 </div>
                 <div className="mb-2 flex-1">
@@ -46,6 +69,8 @@ function App() {
                         id="lastName"
                         placeholder="Last Name"
                         className="mt-1 p-2 border rounded w-full"
+                        onChange={(e) => setLastName(e.target.value)}
+                        value={lastName}
                     />
                 </div>
                 <div className="mb-2 flex-1">
@@ -55,16 +80,20 @@ function App() {
                         id="age"
                         placeholder="Age"
                         className="mt-1 p-2 border rounded w-full"
+                        onChange={(e) => setAge(e.target.value)}
+                        value={age}
                     />
                 </div>
                 <div className='flex-1 mt-8'>
                     <button
                         className="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2"
+                        onClick={() => handleSave()}
                     >
                         Save
                     </button>
                     <button
                         className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded"
+                        onClick={() => handleClear()}
                     >
                         Clear
                     </button>
