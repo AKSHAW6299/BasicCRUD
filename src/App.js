@@ -45,14 +45,25 @@ function App() {
         setLastName('');
         setAge('');
         setId(0);
+        setIsUpdate(false);
     }
 
     const handleSave = () => {
         alert('save');
     }
 
+    // We have to find index to update
     const handleUpdate = () => {
-        alert('update');
+        const index = data.map((item) => {
+            return item.id;
+        }).indexOf(id);
+
+        const dt = [...data];
+        dt[index].firstName = firstName;
+        dt[index].lastName = lastName;
+        dt[index].age = age;
+        setData(dt);
+        handleClear();
     }
 
     return (
