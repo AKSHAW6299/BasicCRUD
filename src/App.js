@@ -27,27 +27,54 @@ function App() {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Basic CRUD</h1>
+            <h1 className="text-2xl font-semibold mb-4">Basic CRUD</h1>
 
-            <div>
-                <div>
-                    <label htmlFor="" className="">First Name</label>
-                    <input type="text" placeholder='First Name' />
+            <div className="mb-4 flex space-x-2 gap-4">
+                <div className="mb-2 flex-1">
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">First Name</label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        placeholder="First Name"
+                        className="mt-1 p-2 border rounded w-full"
+                        // value={firstName}
+                        // onChange={(e) => setFirstName(e.target.value)}
+                    />
                 </div>
-                <div>
-                    <label htmlFor="" className="">Last Name</label>
-                    <input type="text" placeholder='Last Name' />
+                <div className="mb-2 flex-1">
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Last Name</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        placeholder="Last Name"
+                        className="mt-1 p-2 border rounded w-full"
+                        // value={lastName}
+                        // onChange={(e) => setLastName(e.target.value)}
+                    />
                 </div>
-                <div>
-                    <label htmlFor="" className="">Age</label>
-                    <input type="text" placeholder='Age' />
+                <div className="mb-2 flex-1">
+                    <label htmlFor="age" className="block text-sm font-medium text-gray-700">Age</label>
+                    <input
+                        type="text"
+                        id="age"
+                        placeholder="Age"
+                        className="mt-1 p-2 border rounded w-full"
+                        // value={age}
+                        // onChange={(e) => setAge(e.target.value)}
+                    />
                 </div>
-                <div>
-                    <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2" onClick={() => handleEdit()}>
+                <div className='flex-1 mt-8'>
+                    <button
+                        className="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2"
+                        // onClick={() => handleEdit(editId)}
+                    >
                         Save
                     </button>
-                    <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleDelete()}>
-                        clear
+                    <button
+                        className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded"
+                        // onClick={handleClear}
+                    >
+                        Clear
                     </button>
                 </div>
             </div>
