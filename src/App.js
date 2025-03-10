@@ -5,7 +5,7 @@ function App() {
     const [data, setData] = useState([]);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [age, setAge] = useState(0);
+    const [age, setAge] = useState('');
     const [id, setId] = useState(0);
 
     console.log('data :', data);
@@ -39,13 +39,18 @@ function App() {
     const handleClear = () => {
         setFirstName('');
         setLastName('');
-        setAge(0);
+        setAge('');
         setId(0);
     }
 
     const handleSave = () => {
         alert('save');
     }
+
+    const handleUpdate = () => {
+        alert('update');
+    }
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-semibold mb-4">Basic CRUD</h1>
@@ -92,7 +97,13 @@ function App() {
                         Save
                     </button>
                     <button
-                        className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded mr-2"
+                        onClick={() => handleUpdate()}
+                    >
+                        Update
+                    </button>
+                    <button
+                        className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-1 px-2 rounded"
                         onClick={() => handleClear()}
                     >
                         Clear
