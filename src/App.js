@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { dummyData } from './DummyData';
+import { EmployeeData } from './EmployeeData';
 
 function App() {
     const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ function App() {
 
     // fetch data when the component renders
     useEffect(() => {
-        setData(dummyData);
+        setData(EmployeeData);
     }, []);
 
 
@@ -48,8 +48,24 @@ function App() {
         setIsUpdate(false);
     }
 
-    const handleSave = () => {
-        alert('save');
+    const handleSave = (e) => {
+        e.preventDefault();
+        // getting all remaining data
+        const dt = [...data];
+
+        // for addinhg a new data, creating an object of the data
+        const newObject = {
+            id: EmployeeData.length + 1,
+            firstName: firstName,
+            lastName: lastName,
+            age: age
+        }
+
+        // We are pushing the new object to the data array i.e. dt
+        dt.push(newObject);
+
+        // updating data state
+        setData(dt);
     }
 
     // We have to find index to update
@@ -116,7 +132,7 @@ function App() {
                     ) : (
                         <button
                             className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded mr-2"
-                            onClick={() => handleSave()}
+                            onClick={(e) => handleSave(e)}
                         >
                             Save
                         </button>

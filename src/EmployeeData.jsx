@@ -1,4 +1,4 @@
-export const dummyData = [
+export const EmployeeData = [
     {
       "id": 1,
       "firstName": "Rohit",
