@@ -63,6 +63,7 @@ function App() {
             }
             dt.push(newObject);
             setData(dt);
+            handleClear(); // Clear form after successful save
         } else {
             alert(error);
         }
@@ -78,7 +79,7 @@ function App() {
         dt[index].lastName = lastName;
         dt[index].age = age;
         setData(dt);
-        handleClear();
+        handleClear(); // Clear form after update
     }
 
     return (
@@ -149,7 +150,6 @@ function App() {
                 <thead>
                     <tr className="bg-gray-200">
                         <th className="px-4 py-2 border">ID</th>
-                        <th className="px-4 py-2 border">User ID</th>
                         <th className="px-4 py-2 border">First Name</th>
                         <th className="px-4 py-2 border">Last Name</th>
                         <th className="px-4 py-2 border">Age</th>
@@ -160,7 +160,6 @@ function App() {
                     {data.map((item, index) => (
                         <tr key={index} className="hover:bg-gray-100 text-center">
                             <td className="border px-4 py-2">{index + 1}</td>
-                            <td className="border px-4 py-2">{item.id}</td>
                             <td className="border px-4 py-2">{item.firstName}</td>
                             <td className="border px-4 py-2">{item.lastName}</td>
                             <td className="border px-4 py-2">{item.age}</td>
