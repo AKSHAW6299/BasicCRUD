@@ -1,4 +1,3 @@
-// Link => https://www.youtube.com/watch?v=maGN8iGs744&list=LL&index=1&t=532s
 import React, { useEffect, useState } from 'react';
 import { EmployeeData } from './EmployeeData';
 
@@ -8,19 +7,14 @@ function App() {
     const [lastName, setLastName] = useState('');
     const [age, setAge] = useState('');
     const [id, setId] = useState(0);
-
-    // Flag to show 1 button save or update at a single time!
     const [isUpdate, setIsUpdate] = useState(false);
 
     console.log('data :', data);
 
-    // fetch data when the component renders
     useEffect(() => {
         setData(EmployeeData);
     }, []);
 
-
-    // Creating 2 events, for edit and delete
     const handleEdit = (id) => {
         const dt = data.filter(item => item.id === id);
         if (dt !== undefined) {
@@ -32,9 +26,7 @@ function App() {
         }
     }
 
-    // 4) Delete method
     const handleDelete = (id) => {
-        // this condition will return the all id except the deleted id!
         if (id > 0) {
             if (window.confirm('Are you sure you want to delete?')) {
                 const dt = data.filter(item => item.id !== id);
@@ -51,9 +43,7 @@ function App() {
         setIsUpdate(false);
     }
 
-    // 1) Create method
     const handleSave = (e) => {
-
         let error = ''
         if (firstName === '')
             error += 'First name is required\n';
@@ -64,25 +54,20 @@ function App() {
         
         if (error === '') {
             e.preventDefault();
-            // getting all remaining data
             const dt = [...data];
-            // for addinhg a new data, creating an object of the data
             const newObject = {
                 id: EmployeeData.length + 1,
                 firstName: firstName,
                 lastName: lastName,
                 age: age
             }
-            // We are pushing the new object to the data array i.e. dt
             dt.push(newObject);
-            // updating data state
             setData(dt);
         } else {
             alert(error);
         }
     }
 
-    // 3) Update method : We have to find index to update
     const handleUpdate = () => {
         const index = data.map((item) => {
             return item.id;
@@ -135,7 +120,6 @@ function App() {
                     />
                 </div>
                 <div className='flex-1 mt-8'>
-                    {/* Using check */}
                     {isUpdate ? (
                         <button
                             className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded mr-2"
@@ -159,7 +143,6 @@ function App() {
                     </button>
                 </div>
             </div>
-
 
             <hr />
             <table className="table-auto w-full border-collapse">
@@ -185,7 +168,11 @@ function App() {
                                 <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2" onClick={() => handleEdit(item.id)}>
                                     Edit
                                 </button>
-                                <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleDelete(item.id)}>
+                                <button 
+                                    className={`${index < 3 ? 'bg-gray-400 cursor-not-allowed' : 'bg-red-600 hover:bg-red-700'} text-white font-bold py-1 px-2 rounded`} 
+                                    onClick={() => index >= 3 && handleDelete(item.id)}
+                                    disabled={index < 3}
+                                >
                                     Delete
                                 </button>
                             </td>
